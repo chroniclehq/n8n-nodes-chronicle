@@ -1,5 +1,5 @@
 import type { IDataObject, IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
-import { NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError, sleep } from 'n8n-workflow';
 
 import { chronicleApiRequest, extractChronicleErrorMessage } from '../shared/transport';
 
@@ -97,8 +97,7 @@ export async function generateAndPoll(this: IExecuteFunctions): Promise<INodeExe
 			let lastPhase: string | undefined;
 
 			while (Date.now() - start < MAX_DURATION_MS) {
-				// eslint-disable-next-line @n8n/community-nodes/no-restricted-globals
-				await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+				await sleep(POLL_INTERVAL_MS);
 				attempt += 1;
 
 				lastStatus = (await chronicleApiRequest.call(
