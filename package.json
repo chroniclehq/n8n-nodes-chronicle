@@ -1,6 +1,6 @@
 {
 	"name": "@chroniclehq/n8n-nodes-chronicle",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "n8n community node for Chronicle — generate AI-powered presentations and decks from your workflows.",
 	"keywords": [
 		"n8n-community-node-package",
